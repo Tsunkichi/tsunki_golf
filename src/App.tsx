@@ -10,6 +10,10 @@ import { Contact } from './pages/Contact.tsx';
 import { AdminDashboard } from './pages/admin/Dashboard';
 import { AdminBlogPosts } from './pages/admin/BlogPosts';
 import { AdminEditPost } from './pages/admin/EditPost';
+import { AdminLogin } from './pages/admin/Login';
+import { AdminUsers } from './pages/admin/Users';
+import { ProtectedRoute } from './components/ProtectedRoute';
+import { AuthProvider } from './context/AuthContext';
 
 function AppContent() {
   const location = useLocation();
@@ -42,15 +46,48 @@ function AppContent() {
         {!isAdminRoute && <Navbar />}
         <main>
           <Routes>
+            {/* Public Routes */}
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
             <Route path="/about" element={<About />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/admin" element={<AdminDashboard />} />
-            <Route path="/admin/posts" element={<AdminBlogPosts />} />
-            <Route path="/admin/posts/:id" element={<AdminEditPost />} />
+
+            {/* Admin Routes */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/posts"
+              element={
+                <ProtectedRoute>
+                  <AdminBlogPosts />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/posts/:id"
+              element={
+                <ProtectedRoute>
+                  <AdminEditPost />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/users"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminUsers />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </main>
       </div>
@@ -60,9 +97,11 @@ function AppContent() {
 
 function App() {
   return (
-    <Router>
-      <AppContent />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </AuthProvider>
   );
 }
 
