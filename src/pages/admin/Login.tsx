@@ -1,23 +1,37 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
 export function AdminLogin() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { login } = useAuth();
+    const { login, isAuthenticated } = useAuth();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    // If already authenticated, redirect to admin dashboard
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/admin');
+        }
+    }, [isAuthenticated, navigate]);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setError('');
 
-        const success = await login(username, password);
-        if (success) {
-            navigate('/admin');
-        } else {
-            setError('Invalid username or password');
+        try {
+            const success = await login(username, password);
+            if (success) {
+                // Redirect to the page user was trying to access, or admin dashboard
+                const from = (location.state as any)?.from?.pathname || '/admin';
+                navigate(from, { replace: true });
+            } else {
+                setError('Invalid username or password');
+            }
+        } catch (err) {
+            setError('An error occurred during login');
         }
     };
 

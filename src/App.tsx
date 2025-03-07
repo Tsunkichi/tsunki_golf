@@ -12,6 +12,8 @@ import { AdminBlogPosts } from './pages/admin/BlogPosts';
 import { AdminEditPost } from './pages/admin/EditPost';
 import { AdminLogin } from './pages/admin/Login';
 import { AdminUsers } from './pages/admin/Users';
+import { AdminProducts } from './pages/admin/Products';
+import { AdminEditProduct } from './pages/admin/EditProduct';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { AuthProvider } from './context/AuthContext';
 
@@ -56,6 +58,8 @@ function AppContent() {
 
             {/* Admin Routes */}
             <Route path="/admin/login" element={<AdminLogin />} />
+
+            {/* Admin Dashboard - Accessible by both admin and author */}
             <Route
               path="/admin"
               element={
@@ -64,11 +68,21 @@ function AppContent() {
                 </ProtectedRoute>
               }
             />
+
+            {/* Blog Management - Accessible by both admin and author */}
             <Route
               path="/admin/posts"
               element={
                 <ProtectedRoute>
                   <AdminBlogPosts />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/posts/new"
+              element={
+                <ProtectedRoute>
+                  <AdminEditPost />
                 </ProtectedRoute>
               }
             />
@@ -80,6 +94,34 @@ function AppContent() {
                 </ProtectedRoute>
               }
             />
+
+            {/* Product Management - Admin only */}
+            <Route
+              path="/admin/products"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminProducts />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/products/new"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminEditProduct />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin/products/:id"
+              element={
+                <ProtectedRoute requireAdmin>
+                  <AdminEditProduct />
+                </ProtectedRoute>
+              }
+            />
+
+            {/* User Management - Admin only */}
             <Route
               path="/admin/users"
               element={
