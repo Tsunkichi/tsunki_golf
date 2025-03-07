@@ -1,6 +1,27 @@
-# PrecisionGolf - Modern Golf Website
+# Golf Website
 
-A modern, responsive golf website built with React, TypeScript, and Tailwind CSS. The site features a beautiful dark theme with gradient effects, an admin dashboard, and a blog system.
+A modern, responsive golf website built with React, TypeScript, and Three.js. Features include:
+
+- Interactive 3D golf ball visualization
+- Responsive design with Tailwind CSS
+- User authentication system
+- Course information and booking system
+- Modern UI with smooth animations
+
+## Tech Stack
+
+- React + TypeScript
+- Vite
+- Three.js for 3D graphics
+- Tailwind CSS for styling
+- React Router for navigation
+
+## Getting Started
+
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run the development server: `npm run dev`
+4. Open http://localhost:5173 in your browser
 
 ## 🌟 Features
 

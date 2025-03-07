@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="dimples" x="0" y="0" width="64" height="64" patternUnits="userSpaceOnUse">
+      <circle cx="32" cy="32" r="8" fill="#808080"/>
+    </pattern>
+  </defs>
+  <rect width="512" height="512" fill="#808080"/>
+  <rect width="512" height="512" fill="url(#dimples)"/>
+</svg> 

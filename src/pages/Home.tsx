@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Trophy, Target, Clock, Users, ChevronRight, CheckCircle } from 'lucide-react';
+import { GolfBallScene } from '../components/GolfBallScene';
 
 export function Home() {
   return (
@@ -75,15 +76,10 @@ export function Home() {
               </div>
             </div>
 
-            {/* Right Column - Images */}
-            <div className="relative hidden lg:block">
-              {/* Main Image */}
-              <div className="relative z-10 rounded-xl overflow-hidden neon-border">
-                <img
-                  src="https://images.unsplash.com/photo-1535131749006-b7f58c99034b?auto=format&fit=crop&q=80"
-                  alt="Golf player in action"
-                  className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-500"
-                />
+            {/* Right Column - 3D Golf Ball */}
+            <div className="relative w-full h-[400px]">
+              <div className="relative z-10 rounded-xl overflow-hidden neon-border bg-dark-200/50 w-full h-full">
+                <GolfBallScene />
               </div>
               {/* Floating Elements */}
               <div className="absolute top-20 -right-8 z-20 glass-panel p-3 animate-float">
