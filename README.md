@@ -117,11 +117,7 @@ If you find this project helpful, consider buying me a coffee to support my work
 
 [![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg)](https://buymeacoffee.com/asheint)
 
-## 👥 Authors
-
-- Your Name - Initial work
-
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [React](https://reactjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
