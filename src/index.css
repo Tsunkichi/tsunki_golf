@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-dark text-white min-h-screen;
+        font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    }
+
+    ::-webkit-scrollbar {
+        @apply w-2;
+    }
+
+    ::-webkit-scrollbar-track {
+        @apply bg-dark-200;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        @apply bg-purple rounded-full;
+    }
+}
+
+@layer components {
+    .glass-panel {
+        @apply bg-dark-100/30 backdrop-blur-lg border border-dark-300/50 rounded-xl;
+    }
+
+    .neon-border {
+        @apply border border-purple/50 shadow-neon;
+    }
+
+    .neon-text {
+        @apply text-transparent bg-clip-text bg-gradient-to-r from-purple to-neon-blue;
+    }
+
+    .hover-glow {
+        @apply transition-all duration-300 hover:shadow-neon-strong;
+    }
+}
+
+@layer utilities {
+    .text-gradient {
+        @apply text-transparent bg-clip-text bg-gradient-to-r;
+    }
+
+    .bg-grid {
+        @apply bg-tech-grid bg-grid-lg;
+    }
+}
