@@ -1,12 +1,11 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
     exclude: ['lucide-react'],
-    include: ['three'],
+    include: ['three'], // Mantener 'three' para precompilación
   },
   server: {
     host: true,
@@ -14,8 +13,9 @@ export default defineConfig({
   build: {
     target: 'esnext',
     sourcemap: true,
+    // Eliminar la configuración 'external' para 'three' en Rollup
     rollupOptions: {
-      external: ['three'],
+      // external: ['three'], // Esto debe eliminarse
     },
   },
 });
